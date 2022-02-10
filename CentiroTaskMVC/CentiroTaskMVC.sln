@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentiroTaskMVC", "CentiroTaskMVC\CentiroTaskMVC.csproj", "{FE97CE65-893F-4784-A636-2B2C678B6130}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE97CE65-893F-4784-A636-2B2C678B6130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE97CE65-893F-4784-A636-2B2C678B6130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE97CE65-893F-4784-A636-2B2C678B6130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE97CE65-893F-4784-A636-2B2C678B6130}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14B446ED-CDAB-4A9E-AE8F-8980495BC50C}
+	EndGlobalSection
+EndGlobal

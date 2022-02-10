@@ -1,0 +1,30 @@
+﻿@model CentiroTaskMVC.Models.Connect
+
+@{
+    ViewData["Title"] = "LoginView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order database</h2>
+
+
+<table>
+    <tr>
+        @foreach (var orderColumn in ViewBag.AllOrderTable.Columns)
+        {
+            <th>@orderColumn.ColumnName</th>
+        }
+    </tr>
+    @foreach (var orderRow in ViewBag.AllOrderTable.Rows)
+    {
+        <tr>
+            @for (int i = 0; i < ViewBag.AllOrderTable.Columns.Count; ++i)
+            {
+                <td>@orderRow[i]</td>
+            }
+        </tr>
+    }
+</table>
+
+
+ 
