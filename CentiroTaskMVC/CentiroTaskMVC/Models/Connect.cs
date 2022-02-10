@@ -27,12 +27,26 @@ namespace CentiroTaskMVC.Models
 
             }
 
-        public DataTable GetSpecificOrderNumber(string orderNumber)
+        public DataTable GetAllDistinctOrderNumbers()
+        {
+            MySqlConnection dbcon = new MySqlConnection(ConnectionString);
+            dbcon.Open();
+            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT DISTINCT OrderNumber FROM CentiroOrder; ", dbcon);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "result");
+            DataTable orderTable = ds.Tables["result"];
+            dbcon.Close();
+
+            return orderTable;
+
+        }
+
+        public DataTable GetOrderNumber(string orderNumber)
         {
 
             MySqlConnection dbcon = new MySqlConnection(ConnectionString);
             dbcon.Open();
-            MySqlDataAdapter adapter = new MySqlDataAdapter("select * from CentiroOrder where OrderNumber=@OrderNumber;", dbcon);
+            MySqlDataAdapter adapter = new MySqlDataAdapter("select * from CentiroOrder where OrderNumber=@OrderNumber order by OrderLineNumber;", dbcon);
             adapter.SelectCommand.Parameters.AddWithValue("@OrderNumber", orderNumber);
             DataSet ds = new DataSet();
             adapter.Fill(ds, "result");

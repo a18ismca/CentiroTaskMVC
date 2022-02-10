@@ -14,15 +14,21 @@ namespace CentiroTaskMVC.Controllers
         public IActionResult GetAll()
         {
             var dbConnection = new Connect();
-            ViewBag.AllOrderTable = dbConnection.GetAllOrders();
-
+            ViewBag.AllOrdersTable = dbConnection.GetAllOrders();
             return View();
         }
 
-        public IActionResult OrderNumberSearch(string orderNumber)
+        public IActionResult SearchView()
         {
             var dbConnection = new Connect();
-            ViewBag.SpecificOrderTable = dbConnection.GetSpecificOrderNumber(orderNumber);
+            ViewBag.AllDistinctOrderNumbers = dbConnection.GetAllDistinctOrderNumbers();
+            return View();
+        }
+
+        public IActionResult GetOrderNumber(string orderNumber)
+        {
+            var dbConnection = new Connect();
+            ViewBag.SearchResults = dbConnection.GetOrderNumber(orderNumber);
             return View();
         }
     }

@@ -1,0 +1,45 @@
+﻿@model CentiroTaskMVC.Models.Connect
+
+@{
+    ViewBag.Title = "Search result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+<h3>Order stats</h3>
+
+@if (ViewBag.SearchResults != null && ViewBag.SearchResults.Rows.Count > 0)
+{
+    <table>
+        <tr>
+            @foreach (var orderColumn in ViewBag.SearchResults.Columns)
+            {
+                <th>@orderColumn.ColumnName</th>
+            }
+        </tr>
+        @foreach (var orderRow in ViewBag.SearchResults.Rows)
+        {
+            <tr>
+                @for (int i = 0; i < ViewBag.SearchResults.Columns.Count; ++i)
+                {
+                    <td>@orderRow[i]</td>
+                }
+
+            </tr>
+        }
+    </table>
+
+}
+else
+{
+    <p>No search results found!</p>
+}
+    
+
+    <label>What next?</label><br/>
+@Html.ActionLink("Return to order search", "SearchView", "Order", null, new { title = "Go back where you came from!" })<br />
+@Html.ActionLink("Return to homepage", "Index", "Home", null, new { title = "Go back to home page" })<br />
+
+
+
+</body>

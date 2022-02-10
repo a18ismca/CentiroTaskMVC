@@ -1,0 +1,7 @@
+﻿body {
+}
+
+table, th, tr, td{
+    border-style: solid;
+    border-color: black;
+}

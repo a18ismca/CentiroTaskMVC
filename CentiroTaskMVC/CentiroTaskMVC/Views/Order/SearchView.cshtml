@@ -1,0 +1,41 @@
+﻿@model CentiroTaskMVC.Models.Connect
+
+
+@{
+    ViewData["Title"] = "SearchView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order search</h2>
+
+
+<!--<label>Search order...</label>
+<form method="post" action="f@Url.Action("GetOrderNumber", "Order")">
+    <select name="orderNo">
+        f@foreach (var row in ViewBag.AllOrdersTable.Rows)
+        {
+            <option value="f@row["ProductNumber"]">f@row["ProductNumber"], f@row["OrderNumber"], </option>
+        }
+    </select>
+    <input type="submit" value="Get stats!" />
+</form>
+
+    -->
+
+<form method="post" action="@Url.Action("GetOrderNumber", "Order")">
+    <h4>Select order number...</h4><br />
+    <label>Order number</label><br/>
+    <select name="orderNumber">
+        @foreach (var row in ViewBag.AllDistinctOrderNumbers.Rows)
+        {
+            <option value="@row["OrderNumber"]">@row["OrderNumber"]</option>
+        }
+    </select><br/>
+    <input type="submit" value="Get stats!" /> <br />
+
+
+</form>
+
+@Html.ActionLink("Return to home page", "Index", "Home", null, new { title = "Leave the order search page and return home" })
+
+

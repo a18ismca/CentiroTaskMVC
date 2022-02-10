@@ -5,26 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Order database</h2>
+<head>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
 
-<table>
-    <tr>
-        @foreach (var orderColumn in ViewBag.AllOrderTable.Columns)
-        {
-            <th>@orderColumn.ColumnName</th>
-        }
-    </tr>
-    @foreach (var orderRow in ViewBag.AllOrderTable.Rows)
-    {
+</head>
+
+@Html.ActionLink("Create new user", "Index", "Home", null, new { title = "Leave the order search page and return home" })
+@Html.ActionLink("Return to home page", "Index", "Home", null, new { title = "Leave the order search page and return home" })
+
+
+<h2>Orders</h2>
+<p>Below are the orders made by employees at Centiro.</p>
+
+<div class="hello">
+    <table>
         <tr>
-            @for (int i = 0; i < ViewBag.AllOrderTable.Columns.Count; ++i)
+            @foreach (var orderColumn in ViewBag.AllOrdersTable.Columns)
             {
-                <td>@orderRow[i]</td>
+                <th>@orderColumn.ColumnName</th>
             }
         </tr>
-    }
-</table>
+        @foreach (var orderRow in ViewBag.AllOrdersTable.Rows)
+        {
+            <tr>
+                @for (int i = 0; i < ViewBag.AllOrdersTable.Columns.Count; ++i)
+                {
+                    <td>@orderRow[i]</td>
+                }
+            </tr>
+        }
+    </table>
+</div>
 
 
- 
