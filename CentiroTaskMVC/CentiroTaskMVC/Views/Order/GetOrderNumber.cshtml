@@ -6,39 +6,48 @@
 }
 
 <body>
-<h3>Order stats</h3>
+    <h3>Order stats</h3>
 
-@if (ViewBag.SearchResults != null && ViewBag.SearchResults.Rows.Count > 0)
-{
-    <table>
-        <tr>
-            @foreach (var orderColumn in ViewBag.SearchResults.Columns)
-            {
-                <th>@orderColumn.ColumnName</th>
-            }
-        </tr>
-        @foreach (var orderRow in ViewBag.SearchResults.Rows)
-        {
+    @if (ViewBag.SearchResults != null && ViewBag.SearchResults.Rows.Count > 0)
+    {
+        <table>
             <tr>
-                @for (int i = 0; i < ViewBag.SearchResults.Columns.Count; ++i)
+                @foreach (var orderColumn in ViewBag.SearchResults.Columns)
                 {
-                    <td>@orderRow[i]</td>
+                    <th>@orderColumn.ColumnName</th>
                 }
-
             </tr>
-        }
-    </table>
+            @foreach (var orderRow in ViewBag.SearchResults.Rows)
+            {
+                <tr>
+                    @for (int i = 0; i < ViewBag.SearchResults.Columns.Count; ++i)
+                    {
+                        <td>@orderRow[i]</td>
+                    }
 
-}
-else
-{
-    <p>No search results found!</p>
-}
-    
+                </tr>
+            }
+        </table>
 
-    <label>What next?</label><br/>
-@Html.ActionLink("Return to order search", "SearchView", "Order", null, new { title = "Go back where you came from!" })<br />
-@Html.ActionLink("Return to homepage", "Index", "Home", null, new { title = "Go back to home page" })<br />
+    }
+    else
+    {
+        <h3>No search results found!</h3><br />
+        <p>
+            The reasons may be the following: <br />
+            - The database chosen for this application does not exist or the server of the database may have been turned off <br />
+            - The database does not contain any data <br />
+            - The application does not support the selected database or has not been connected to properly <br />
+            - No order number has been selected. With this said, return to the order search and select a number if not done so.
+
+
+        </p> <br />
+    }
+
+
+    <label>What next?</label><br />
+    @Html.ActionLink("Return to order search", "SearchView", "Order", null, new { title = "Go back where you came from!" })<br />
+    @Html.ActionLink("Return to homepage", "Index", "Home", null, new { title = "Go back to home page" })<br />
 
 
 

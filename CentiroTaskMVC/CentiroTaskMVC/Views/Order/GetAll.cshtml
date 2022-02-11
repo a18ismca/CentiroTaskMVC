@@ -12,11 +12,15 @@
 
 </head>
 
-@Html.ActionLink("Create new user", "Index", "Home", null, new { title = "Leave the order search page and return home" })
+<body>
+
+    <h4>Menu</h4>
+@Html.ActionLink("Create new user", "NewUserView", "Order", null, new { title = "Leave the order search page and return home" }) 
+        <br />
 @Html.ActionLink("Return to home page", "Index", "Home", null, new { title = "Leave the order search page and return home" })
 
-
-<h2>Orders</h2>
+        
+<h4>Orders</h4>
 <p>Below are the orders made by employees at Centiro.</p>
 
 <div class="hello">
@@ -38,5 +42,5 @@
         }
     </table>
 </div>
-
+</body>
 
