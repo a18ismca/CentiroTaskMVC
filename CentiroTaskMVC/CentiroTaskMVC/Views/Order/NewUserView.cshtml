@@ -6,41 +6,91 @@
 
 <h2>Create new user</h2>
 
-<form method="post" action="@Url.Action("GetAll", "Order")">
+<form method="post" action="@Url.Action("InsertNewOrder", "Order")">
 
     <label>
-        <input type="text" name="student_name" value="" placeholder="Student Name" />
+        Order number
     </label> <br />
+
+    <input type="text" name="orderNumber" value="" placeholder="Enter order number" /><br />
+
     <label>
+        Order line number
+    </label><br />
+
+    <input type="text" name="orderLineNumber" value="" placeholder="Enter order line number" /><br />
+
+    <label>
+        Product number
+    </label><br />
+
+    <input type="text" name="productNumber" value="" placeholder="Enter product number" /><br />
+
+
+    <label>
+        Quantity
 
     </label><br />
+
+    <input type="text" name="quantity" value="" placeholder="Enter quantity" /><br />
+
+
     <label>
+        Name
 
     </label><br />
+
+    <input type="text" name="name" value="" placeholder="Enter name of product" /><br />
+
+
     <label>
+        Description
 
     </label><br />
+
+    <input type="text" name="description" value="" placeholder="Enter description" /><br />
+
+
     <label>
+        Price
 
     </label><br />
+
+    <input type="text" name="price" value="" placeholder="Enter price" /><br />
+
+
     <label>
+        Product group
 
     </label><br />
+
+    <input type="text" name="productGroup" value="" placeholder="Enter product group" /><br />
+
+
     <label>
+        Order date
 
     </label><br />
+
+    <input type="text" name="orderDate" value="" placeholder="Enter order date" /><br />
+
+
     <label>
+        Customer name
 
     </label><br />
+
+    <input type="text" name="customerName" value="" placeholder="Enter customer name" /><br />
+
+
     <label>
+        Customer number
 
     </label><br />
-    <label>
 
-    </label><br />
-    <label>
+    <input type="text" name="customerNumber" value="" placeholder="Enter customer number" /><br />
 
-    </label>
+
     <input type="submit" value="Add new user!" /> <br />
 
 

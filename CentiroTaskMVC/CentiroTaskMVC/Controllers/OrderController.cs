@@ -19,16 +19,7 @@ namespace CentiroTaskMVC.Controllers
             return View();
         }
 
-        public IActionResult InsertNewOrder(string orderNumber, string orderLineNumber, string productNumber, string quantity,
-            string name, string description, string price,
-            string productGroup, string orderDate, string customerName, string customerNumber)
-        {
-            var dbConnection = new Connect();
-            dbConnection.InsertOrder(orderNumber, orderLineNumber, productNumber, quantity,
-            name, description, price,
-            productGroup, orderDate, customerName, customerNumber);
-            return RedirectToRoute("GetAll");
-        }
+     
 
         public IActionResult SearchView()
         {
@@ -47,6 +38,36 @@ namespace CentiroTaskMVC.Controllers
         public IActionResult NewUserView()
         {
             return View();
+        }
+
+        // Inserts new order
+        public IActionResult InsertNewOrder(string orderNumber, string orderLineNumber, string productNumber, string quantity,
+         string name, string description, string price,
+         string productGroup, string orderDate, string customerName, string customerNumber)
+        {
+            var dbConnection = new Connect();
+
+            dbConnection.InsertNewOrder(orderNumber, orderLineNumber, productNumber, quantity,
+            name, description, price,
+            productGroup, orderDate, customerName, customerNumber);
+
+            // Return to GetAll.cshtml
+            return RedirectToAction("GetAll");
+        }
+
+
+        // The following method may not work properly
+        public IActionResult DeleteOrder(string orderNumber, string productNumber)
+        {
+
+
+            var dbConnection = new Connect();
+
+            dbConnection.DeleteOrder(orderNumber, productNumber);
+
+            return RedirectToAction("GetAll");
+
+
         }
     }
 }

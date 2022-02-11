@@ -27,10 +27,7 @@ namespace CentiroTaskMVC.Models
 
             }
 
-        internal void InsertOrder()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public DataTable GetAllDistinctOrderNumbers()
         {
@@ -46,6 +43,7 @@ namespace CentiroTaskMVC.Models
 
         }
 
+        // Get a specific order number.
         public DataTable GetOrderNumber(string orderNumber)
         {
 
@@ -62,7 +60,9 @@ namespace CentiroTaskMVC.Models
 
         }
 
-        public void InsertOrder(string orderNumber, string orderLineNumber, string productNumber, string quantity, 
+        
+        // When a new order is created, the method below will insert the specified order into the CentiroOrder table.
+        public void InsertNewOrder(string orderNumber, string orderLineNumber, string productNumber, string quantity, 
             string name, string description, string price, 
             string productGroup, string orderDate, string customerName, string customerNumber)
         {
@@ -70,26 +70,37 @@ namespace CentiroTaskMVC.Models
             dbcon.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = dbcon;
-            cmd.CommandText = "insert into CentiroOrder(OrderNumber, OrderLineNumber, " +
-                "ProductNumber, Quantity, Name, Description, Price, ProductGroup, OrderDate, " +
-                "CustomerName, CustomerNumber) values (@OrderNo, @OrderLineNo, @ProductNo, @Quantity, " +
-                "@Name, @Description, @Price, @ProductGrp, @OrderDate, @CustomerName, @CustomerNo)";
-            cmd.Parameters.AddWithValue("@OrderNo", orderNumber);
-            cmd.Parameters.AddWithValue("@OrderLineNo", orderLineNumber);
-            cmd.Parameters.AddWithValue("@ProductNo", productNumber);
-            cmd.Parameters.AddWithValue("@Quantity", quantity);
-            cmd.Parameters.AddWithValue("@Name", name);
-            cmd.Parameters.AddWithValue("@Description", description);
-            cmd.Parameters.AddWithValue("@Price", price);
-            cmd.Parameters.AddWithValue("@ProductGrp", productGroup);
-            cmd.Parameters.AddWithValue("@OrderDate", orderDate);
-            cmd.Parameters.AddWithValue("@CustomerName", customerName);
-            cmd.Parameters.AddWithValue("@CustomerNo", customerNumber);
+            cmd.CommandText = "insert into CentiroOrder(OrderNumber, OrderLineNumber, ProductNumber, Quantity, Name, Description, Price, ProductGroup, OrderDate, CustomerName, CustomerNumber) values (@ORDERNO, @ORDERLINENO, @PRODUCTNO, @QUANTITY, @NAME, @DESCRIPTION, @PRICE, @PRODUCTGRP, @ORDERDATE, @CUSTOMERNAME, @CUSTOMERNO)";
+            cmd.Parameters.AddWithValue("@ORDERNO", orderNumber);
+            cmd.Parameters.AddWithValue("@ORDERLINENO", orderLineNumber);
+            cmd.Parameters.AddWithValue("@PRODUCTNO", productNumber);
+            cmd.Parameters.AddWithValue("@QUANTITY", quantity);
+            cmd.Parameters.AddWithValue("@NAME", name);
+            cmd.Parameters.AddWithValue("@DESCRIPTION", description);
+            cmd.Parameters.AddWithValue("@PRICE", price);
+            cmd.Parameters.AddWithValue("@PRODUCTGRP", productGroup);
+            cmd.Parameters.AddWithValue("@ORDERDATE", orderDate);
+            cmd.Parameters.AddWithValue("@CUSTOMERNAME", customerName);
+            cmd.Parameters.AddWithValue("@CUSTOMERNO", customerNumber);
             
             cmd.ExecuteNonQuery();
 
             dbcon.Close();
 
+        }
+
+        // The following method may not work properly.
+        public void DeleteOrder(string orderNumber, string productNumber)
+        {
+            MySqlConnection dbcon = new MySqlConnection(ConnectionString);
+            dbcon.Open();
+            string deleteString = "delete from CentiroOrder where OrderNumber=@OrderNumber and ProductNumber=@ProductNumber;";
+            MySqlCommand cmd = new MySqlCommand(deleteString, dbcon);
+            cmd.Parameters.AddWithValue("@OrderNumber", orderNumber);
+            cmd.Parameters.AddWithValue("@ProductNumber", productNumber);
+
+            cmd.ExecuteNonQuery();
+            dbcon.Close();
         }
     }
 }

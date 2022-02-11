@@ -33,12 +33,14 @@
         </tr>
         @foreach (var orderRow in ViewBag.AllOrdersTable.Rows)
         {
-            <tr>
-                @for (int i = 0; i < ViewBag.AllOrdersTable.Columns.Count; ++i)
-                {
-                    <td>@orderRow[i]</td>
-                }
-            </tr>
+        <tr>
+            @for (int i = 0; i < ViewBag.AllOrdersTable.Columns.Count; ++i)
+            {
+                <td>@orderRow[i]</td>
+            }
+
+            <td>@Html.ActionLink("Delete", "DeleteOrder", "Order", new { productNumber = orderRow["ProductNumber"] }, new { title = "Click to delete order " + orderRow["ProductNumber"] + "-" + orderRow["OrderNumber"] })
+        </tr>
         }
     </table>
 </div>
